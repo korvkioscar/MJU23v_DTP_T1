@@ -1,4 +1,5 @@
-﻿using System.Globalization;
+﻿using System.ComponentModel.Design;
+using System.Globalization;
 
 namespace MJU23v_DTP_T1
 {
@@ -44,7 +45,52 @@ namespace MJU23v_DTP_T1
                     eulangs.Add(lang);
                     line = sr.ReadLine();
                 }
+
             }
+            Console.WriteLine("Welcome to the language searcher");
+            while (true) 
+            {
+                Console.WriteLine("Type your command");
+                string userinput = Console.ReadLine();
+
+                if (userinput.Contains("list group"))
+                {
+                    var groupname = userinput.Replace("list group", "").Trim();
+                    Console.WriteLine(groupname);
+
+                    foreach (Language L in eulangs)
+                    {
+                        int index = L.group.IndexOf(groupname);
+                        if (index != -1)
+                            L.Print();
+                    }
+
+                }
+                else if (userinput.Contains("list country"))
+                {
+                    var country = userinput.Replace("list country", "").Trim();
+                    foreach (Language L in eulangs)
+                    {
+                        int index = L.area.IndexOf(country);
+                        if (index != -1)
+                            L.Print();
+                    }
+                }
+                else if (userinput.Contains("population group"))
+                {
+                    var groupname = userinput.Replace("population group", "").Trim();
+                    int sumgerm1 = 0;
+                    foreach (Language L in eulangs)
+                    {
+                        int index = L.group.IndexOf(groupname);
+                        if (index != -1)
+                            sumgerm1 += L.pop;
+                        
+                    }
+                    Console.WriteLine(sumgerm1 + " " + groupname);
+                }
+            }
+
             Console.WriteLine("==== Languages in Spain ====");
             foreach (Language L in eulangs)
             {
