@@ -106,6 +106,18 @@ namespace MJU23v_DTP_T1
                         if (!found)
                             Console.WriteLine($"Språk '{langname}' hittades inte.");
                     }
+                    // Steg 6: Befolkning
+                    else if (command == "population" && parts.Length >= 3 && parts[1].ToLower() == "group")
+                    {
+                        string groupname = string.Join(' ', parts.Skip(2));
+                        int totalPop = 0;
+                        foreach (Language L in eulangs)
+                        {
+                            if (L.group.Contains(groupname, StringComparison.OrdinalIgnoreCase))
+                                totalPop += L.pop;
+                        }
+                        Console.WriteLine($"Sum population {groupname}: {totalPop}");
+                    }
 
                     else
                     {
