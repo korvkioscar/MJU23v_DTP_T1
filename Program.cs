@@ -90,22 +90,48 @@ namespace MJU23v_DTP_T1
                         }
                     }
                     // Steg 5: Språk
-                    else if (command == "show" && parts.Length >= 2)
+                    else if (command == "show")
                     {
-                        string langname = string.Join(' ', parts.Skip(1));
-                        bool found = false;
-                        foreach (Language L in eulangs)
+                        if (parts.Length >= 3 && parts[1].ToLower() == "country")
                         {
-                            if (L.language.Equals(langname, StringComparison.OrdinalIgnoreCase))
+                            // show country <countryname>
+                            string countryname = string.Join(' ', parts.Skip(2));
+                            bool found = false;
+                            foreach (Language L in eulangs)
                             {
-                                L.Print();
-                                found = true;
-                                break;
+                                if (L.area.Contains(countryname, StringComparison.OrdinalIgnoreCase))
+                                {
+                                    L.Print();
+                                    found = true;
+                                }
                             }
+                            if (!found)
+                                Console.WriteLine($"Inget språk hittades för landet '{countryname}'.");
                         }
-                        if (!found)
-                            Console.WriteLine($"Språk '{langname}' hittades inte.");
+                        // Steg 7: Visa Länder
+                        else if (parts.Length >= 2)
+                        {
+                            // show <language>
+                            string langname = string.Join(' ', parts.Skip(1));
+                            bool found = false;
+                            foreach (Language L in eulangs)
+                            {
+                                if (L.language.Equals(langname, StringComparison.OrdinalIgnoreCase))
+                                {
+                                    L.Print();
+                                    found = true;
+                                    break;
+                                }
+                            }
+                            if (!found)
+                                Console.WriteLine($"Språk '{langname}' hittades inte.");
+                        }
+                        else
+                        {
+                            Console.WriteLine("Ogiltigt show-kommando. Använd t.ex. 'show Basque' eller 'show country Latvia'");
+                        }
                     }
+
                     // Steg 6: Befolkning
                     else if (command == "population" && parts.Length >= 3 && parts[1].ToLower() == "group")
                     {
