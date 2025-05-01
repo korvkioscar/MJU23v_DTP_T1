@@ -168,7 +168,8 @@ namespace MJU23v_DTP_T1
                         Console.WriteLine("Okänt kommando. Skriv 'help' för hjälp.");
                     }
                 }
-
+                // NYI : show between <Low> and <high>
+                
             }
         }
     }
