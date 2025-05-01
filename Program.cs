@@ -56,7 +56,7 @@ namespace MJU23v_DTP_T1
 
                     string command = parts[0].ToLower();
 
-                    // Steg 3: help och quit
+                    // Steg 2: help och quit
                     if (command == "quit")
                         break;
                     else if (command == "help")
@@ -68,6 +68,16 @@ namespace MJU23v_DTP_T1
                         Console.WriteLine("  list country <countryname>");
                         Console.WriteLine("  show <language>");
                         Console.WriteLine("  population group <groupname>");
+                    }
+                    // Steg 3: Grupper 
+                    else if (command == "list" && parts.Length >= 3 && parts[1].ToLower() == "group")
+                    {
+                        string groupname = string.Join(' ', parts.Skip(2));
+                        foreach (Language L in eulangs)
+                        {
+                            if (L.group.Contains(groupname, StringComparison.OrdinalIgnoreCase))
+                                Console.WriteLine(L.language);
+                        }
                     }
                     else
                     {
