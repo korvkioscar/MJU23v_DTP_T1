@@ -7,3 +7,4 @@
 5. Implementera: show <language>
 6. Implementera: population group <groupnames>
 7. Implementera: show <countryname>
+8: Implementera: list between <low> & <high>

@@ -89,6 +89,24 @@ namespace MJU23v_DTP_T1
                                 Console.WriteLine(L.language);
                         }
                     }
+                    // Steg 7: List mellan hög och låg population
+                    else if (command == "list" && parts.Length >= 5 && parts[1].ToLower() == "between" && parts[3].ToLower() == "and")
+                    {
+                        if (int.TryParse(parts[2], out int low) && int.TryParse(parts[4], out int high))
+                        {
+                            foreach (Language L in eulangs)
+                            {
+                                if (L.pop >= low && L.pop <= high)
+                                    Console.WriteLine(L.language);
+                            }
+                        }
+                        else
+                        {
+                            Console.WriteLine("Felaktiga tal. Använd: list between <low> and <high>");
+                        }
+                    }
+
+
                     // Steg 5: Språk
                     else if (command == "show")
                     {
