@@ -45,44 +45,6 @@ namespace MJU23v_DTP_T1
                     line = sr.ReadLine();
                 }
             }
-            Console.WriteLine("==== Languages in Spain ====");
-            foreach (Language L in eulangs)
-            {
-                int index = L.area.IndexOf("Spain");
-                if (index != -1)
-                    L.Print();
-            }
-            Console.WriteLine("==== Baltic Languages ====");
-            foreach (Language L in eulangs)
-            {
-                int index = L.group.IndexOf("Baltic");
-                if (index != -1)
-                    L.Print();
-            }
-            Console.WriteLine("==== Population larger than 50 millions ====");
-            foreach (Language L in eulangs)
-            {
-                if (L.pop >= 50_000_000)
-                    L.Print();
-            }
-            Console.WriteLine("==== Number of Germanics ====");
-            int sumgerm = 0;
-            foreach (Language L in eulangs)
-            {
-                int index = L.group.IndexOf("Germanic");
-                if (index != -1)
-                    sumgerm += L.pop;
-            }
-            Console.WriteLine($"Germanic speaking population: {sumgerm}");
-            Console.WriteLine("==== Number of Romance ====");
-            int sumromance = 0;
-            foreach (Language L in eulangs)
-            {
-                int index = L.group.IndexOf("Romance");
-                if (index != -1)
-                    sumromance += L.pop;
-            }
-            Console.WriteLine($"Romance speaking population: {sumromance}");
         }
     }
 }
