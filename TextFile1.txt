@@ -1,6 +1,6 @@
 ﻿ Plan
 
-1. Skapa kommandoloop
+1. Skapa kommandoloop - ta bort hårdkodade utskrifter
 2. Implementera: kommandon: help, quit
 3. Implementera: list group <groupname>
 4. Implementera: list country <countryname>

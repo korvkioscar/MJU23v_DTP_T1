@@ -44,6 +44,37 @@ namespace MJU23v_DTP_T1
                     eulangs.Add(lang);
                     line = sr.ReadLine();
                 }
+                // Steg 1 - skapa kommandoloop
+                while (true)
+                {
+                    Console.Write("> ");
+                    string input = Console.ReadLine();
+                    if (input == null) continue;
+
+                    string[] parts = input.Split(' ', StringSplitOptions.RemoveEmptyEntries);
+                    if (parts.Length == 0) continue;
+
+                    string command = parts[0].ToLower();
+
+                    // Steg 3: help och quit
+                    if (command == "quit")
+                        break;
+                    else if (command == "help")
+                    {
+                        Console.WriteLine("Tillgängliga kommandon:");
+                        Console.WriteLine("  help");
+                        Console.WriteLine("  quit");
+                        Console.WriteLine("  list group <groupname>");
+                        Console.WriteLine("  list country <countryname>");
+                        Console.WriteLine("  show <language>");
+                        Console.WriteLine("  population group <groupname>");
+                    }
+                    else
+                    {
+                        Console.WriteLine("Okänt kommando. Skriv 'help' för hjälp.");
+                    }
+                }
+
             }
         }
     }
