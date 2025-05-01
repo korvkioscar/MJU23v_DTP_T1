@@ -79,6 +79,34 @@ namespace MJU23v_DTP_T1
                                 Console.WriteLine(L.language);
                         }
                     }
+                    //Steg 4: Land
+                    else if (command == "list" && parts.Length >= 3 && parts[1].ToLower() == "country")
+                    {
+                        string countryname = string.Join(' ', parts.Skip(2));
+                        foreach (Language L in eulangs)
+                        {
+                            if (L.area.Contains(countryname, StringComparison.OrdinalIgnoreCase))
+                                Console.WriteLine(L.language);
+                        }
+                    }
+                    // Steg 5: Språk
+                    else if (command == "show" && parts.Length >= 2)
+                    {
+                        string langname = string.Join(' ', parts.Skip(1));
+                        bool found = false;
+                        foreach (Language L in eulangs)
+                        {
+                            if (L.language.Equals(langname, StringComparison.OrdinalIgnoreCase))
+                            {
+                                L.Print();
+                                found = true;
+                                break;
+                            }
+                        }
+                        if (!found)
+                            Console.WriteLine($"Språk '{langname}' hittades inte.");
+                    }
+
                     else
                     {
                         Console.WriteLine("Okänt kommando. Skriv 'help' för hjälp.");
