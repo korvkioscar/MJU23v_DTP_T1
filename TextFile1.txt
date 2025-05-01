@@ -1,0 +1,8 @@
+﻿ Plan
+
+1. Skapa kommandoloop
+2. Implementera: kommandon: help, quit
+3. Implementera: list group <groupname>
+4. Implementera: list country <countryname>
+5. Implementera: show <language>
+6. Implementera: population group <groupnames>
